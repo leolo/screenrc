@@ -1,0 +1,90 @@
+crlf off                        # No Microsoft linebreaks
+startup_message off             # bypass GPL notice (we're aware)
+defscrollback 15000             # big scrollback
+shelltitle ""                   # no title by default - set in PS1
+defutf8 on						# Set encoding utf8
+autodetach on					# Automatically detach on hangup
+vbell off						# Disable vbell
+
+#defencoding utf8
+#encoding utf8 utf8
+#caption always "%{= wk} %{= KY} [%n]%t @ %H %{-} %= %{= KR} %l %{-} | %{= KG} %Y-%m-%d %{-} "
+#hardstatus alwayslastline " %-Lw%{= Bw}%n%f %t%{-}%+Lw %=| %0c:%s "
+#bindkey ^[z prev
+#bindkey ^[x next
+termcapinfo xterm*|rxvt* 'ti@:te@'
+termcapinfo xterm ti@:te@
+
+
+## Switch different window ##
+# C + left : prev
+# C + right : next
+# screen IN gnome-terminal, Ctrl+*
+bindkey "^[[1;5C" next
+bindkey "^[[1;5D" prev
+# screen IN putty, Ctrl+*
+bindkey "^[[C" next
+bindkey "^[[D" prev
+# 
+bindkey "^[O5C" next
+bindkey "^[O5D" prev
+
+# C-a b : encoding big5
+# C-a u : encoding utf8
+#bind b encoding big5 utf8
+#bind u encoding utf8 utf8
+
+# C-b $num : move current window to number $num
+bind -c move 0 number 0
+bind -c move 1 number 1
+bind -c move 2 number 2
+bind -c move 3 number 3
+bind -c move 4 number 4
+bind -c move 5 number 5
+bind -c move 6 number 6
+bind -c move 7 number 7
+bind -c move 8 number 8
+bind -c move 9 number 9
+bindkey "^b" command -c move
+
+bindkey -k k2 title				# F2 : set title of current window。 (C-a A)
+
+# Alt + (`~9) : switch to window(0~9)
+bindkey "^[`" select 0
+bindkey "^[1" select 1
+bindkey "^[2" select 2
+bindkey "^[3" select 3
+bindkey "^[4" select 4
+bindkey "^[5" select 5
+bindkey "^[6" select 6
+bindkey "^[7" select 7
+bindkey "^[8" select 8
+bindkey "^[9" select 9
+
+# F12 : fast kill
+#bindkey "^[[24~" kill
+
+# Remove the split window
+bindkey ^R remove
+# Kill the window
+bindkey ^K kill
+# No split window, just Only one window
+bindkey ^O only
+
+
+#termcapinfo xterm 'hs:ts=\E]0;:fs=\007:ds=\E]0;bash\007'
+#caption always "%{= bk} %{= wk} %-Lw%{by}%n+%f %t%{wk}%{wk}%+Lw %=%{kw}%{= R}%{-}"
+shelltitle '$ |bssh'
+
+defhstatus "\005t"
+#hardstatus on
+#caption always "%{= wk} %{= KY} [%n]%t @ %H %{-} %= %{= KR} %l %{-} | %{= KG} %Y-%m-%d %{-} "
+#hardstatus alwayslastline " %-Lw%{= Bw}%n%f %t%{-}%+Lw %=| %0c:%s "
+
+#buttom status bar
+caption always "%{= .G} %-w%<%{=ub .y}[%n %t]%{= .G}%+w "
+hardstatus alwaysignore
+#hardstatus alwayslastline "%{= .K} [%l]%<%=%{= .W}@%H %=%{= .y} %Y/%m/%d%{= .m} %C %A"
+
+#shelltitle '$|csh'
+#caption always "%{bw}%M/%d %c %{wb} %-w%{c}%n %t%{w}%+w%{k}"
